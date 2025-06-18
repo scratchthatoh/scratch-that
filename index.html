@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    .button {
+      display: inline-block;
+      background-color: #ff7043;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scratch That!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
+  <style>
+.book-button {
+  display: inline-block;
+  margin-top: 1rem;
+  background: #ff8a5b;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.book-button:hover {
+  background: #ff7043;
+}
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff8f4;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    header img {
+      max-width: 200px;
+      height: auto;
+    }
+    .slogan {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #555;
+      margin-top: 0.5rem;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ff8a5b;
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #ff7043;
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    section:nth-of-type(even) {
+      background: #fff1ea;
+    }
+    h2, h3, header p {
+      font-family: 'Fredoka', sans-serif;
+    }
+    h2 {
+      border-bottom: 2px solid #ff8a5b;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-item button {
+      width: 100%;
+      text-align: left;
+      background: #eee;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .faq-item button:hover {
+      background-color: #ff7043;
+      color: #fff;
+    }
+    .faq-item div {
+      display: none;
+      padding: 0.5rem 1rem;
+      background: #f9f9f9;
+      border-left: 3px solid #ff8a5b;
+      margin-top: 0.25rem;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    form button {
+      background: #ff8a5b;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    form button:hover {
+      background-color: #ff7043;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 1rem;
+    }
+    .card {
+  background: #fff7f3;
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: 2px solid #ffbfa7;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card button {
+  margin-top: 1rem;
+  align-self: center;
+  background-color: #ff8a5b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #ff7043;
+}
+    .sticky-book {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff8a5b;
+      color: white;
+      padding: 0.75rem 1.2rem;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
+      .sticky-book {
+        display: inline-block;
+      }
+    }
+  </style>
+<style>
+  .faq-item button {
+    background-color: #ffbfa7;
+    color: #2e2e2e;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-item button:hover {
+    background-color: #ff8a5b;
+    color: white;
+  }
+
+  .faq-item div {
+    background-color: #fff5ef;
+    color: #333;
+    padding: 10px 15px;
+    margin-top: 5px;
+    border-left: 4px solid #ff8a5b;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Scratch That! Logo">
+    <p class="slogan">Backrubs are broken. We fixed them.</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#booking">Book Now</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <a href="#policies">Policies</a>
+  </nav>
+
+  <section style="text-align:center; padding: 3rem 1rem; background: #ffe6dc;">
+    <h1 style="font-size:2.5rem; margin-bottom:1rem; font-family: 'Fredoka', sans-serif;">We Scratch What Ails You</h1>
+    <p style="font-size:1.2rem; max-width:600px; margin:0 auto;">A new kind of relaxation.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Let’s face it: most backrubs from your significant other are trash. And don’t even get us started on your coworker’s awkward shoulder squeeze. <strong>Scratch That!</strong> is the antidote to stress, burnout, and half-assed affection. We specialize in light-touch scratch therapy designed to give your nervous system the hug it never got from your ex (or your manager).</p>
+    <p>We skip the fluff — no oils, no incense, no pan flutes. Just satisfying scalp, neck, back, and shoulder sessions tailored to whatever vibe you're chasing. Looking for tingles? We got you. Want to turn your brain off for 30 minutes without having to talk about your feelings? We super got you.</p>
+    <p>Perfect for the overworked, the overstimulated, and the “I don't know what I need but it’s definitely not a massage” crowd. Healthcare workers, parents, retail warriors — this is your nervous system’s pit stop. Let us bring the calm straight to your door, without judgment or jazz music.</p>
+  </section>
+
+<section style="text-align:center; padding: 3rem 1rem; background: #ffe6dc;">
+  <h2>Did You Know?</h2>
+  <p style="font-size:1.2rem; max-width:600px; margin:0 auto;">
+    Gentle scratching can trigger the release of serotonin and oxytocin — chemicals in your brain that help reduce stress and boost mood. It’s science, not just comfort!
+  </p>
+</section>
+
+ <section id="booking">
+  <h2>Book a Session</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>The Tease</h3>
+      <p>15 minutes of scratching that’ll leave you questioning your life choices… and maybe texting your ex. It’s short, intense, and 100% intentional.</p>
+      <p><strong>$25</strong></p>
+      <a href="https://book.squareup.com/appointments/5wn08ozk7iaqq3/location/LW2XSZSV0B8KK/services/CWGJNDBNUV2GZSDIXQKP7FZL" target="_blank" class="button">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>Hit It & Quit It</h3>
+      <p>Fast, focused, and unapologetic. Back, arms, and that one impossible itch — scratched like it owes you money. No cuddling after.</p>
+      <p><strong>$45</strong></p>
+      <a href="https://book.squareup.com/appointments/5wn08ozk7iaqq3/location/LW2XSZSV0B8KK/services/UIBDV75AH4UNK3ATY6EJH3TP" target="_blank" class="button">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>The Holy Trinity</h3>
+      <p>Back. Neck. Head. 45 minutes of sacred bliss that’ll have you whispering "amen" through the goosebumps.</p>
+      <p><strong>$60</strong></p>
+      <a href="https://book.squareup.com/appointments/5wn08ozk7iaqq3/location/LW2XSZSV0B8KK/services/I4JKQBVZXYADTN4NUF4CWSHZ" target="_blank" class="button">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>Stay Awhile</h3>
+      <p>60-minute full-body session — because you deserve better than “just the shoulders.”</p>
+      <p><strong>$75</strong></p>
+      <a href="https://book.squareup.com/appointments/5wn08ozk7iaqq3/location/LW2XSZSV0B8KK/services/J3BN6G6HINFU6I5LQTU7BWIA" target="_blank" class="button">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>Cloud Nine</h3>
+      <p>More than a session — this is a mini vacation for your nervous system. 75 minutes of bliss so deep you might start drooling (and that’s okay)..</p>
+      <p><strong>$90</strong></p>
+      <a href="https://book.squareup.com/appointments/5wn08ozk7iaqq3/location/LW2XSZSV0B8KK/services/B4GKRO2HBO6RBCYHWF47XCER" target="_blank" class="button">Book Now</a>
+    </div>
+    <div class="card">
+      <h3>The Full Exorcism</h3>
+      <p>90 minutes of scratching so satisfying, your stress will need a passport to come back.</p>
+      <p><strong>$130</strong></p>
+      <a href="https://book.squareup.com/appointments/5wn08ozk7iaqq3/location/LW2XSZSV0B8KK/services/L5QOTZOA3Z5BBEB666HN3BRO" target="_blank" class="button">Book Now</a>
+    </div>
+  </div>
+</section>
+
+
+
+    </div>
+  <h2>Client Service Waiver & Agreement
+Scratch That! LLC – Ohio
+
+Please read carefully before signing.
+
+By booking and receiving services from Scratch That! LLC ("the Company"), I ("the Client") understand and agree to the following terms:
+
+<P>1. Non-Medical Services
+<p>I acknowledge that Scratch That! provides non-medical, non-therapeutic relaxation services. I understand that no portion of any session is intended to diagnose, treat, cure, or prevent any medical condition or disease.
+I confirm that I am not seeking medical advice or treatment of any kind.<p>
+
+<P>2. Health Acknowledgment
+<p>I certify that I am physically capable of receiving light-touch, scratch-based relaxation services.
+I will inform the Company of any skin conditions, allergies, injuries, or sensitivities before my session.
+I release Scratch That! from liability for any adverse reaction not previously disclosed by me.<p>
+
+<P>3. Personal Conduct
+<p>I understand that Scratch That! is a professional service. Any inappropriate behavior, suggestive comments, or violations of personal boundaries will result in immediate termination of the session without refund and may result in being permanently banned from future bookings.
+I agree to treat staff with respect and maintain appropriate conduct at all times.<p>
+
+<P>4. Liability Release
+<p>I voluntarily assume all risks related to receiving scratch-based relaxation services, including but not limited to minor skin irritation or discomfort.
+I hereby waive and release Scratch That!, its employees, contractors, and representatives from any and all liability, claims, demands, or causes of action that may arise as a result of participation in its services.
+This includes claims related to negligence, accidental injury, or dissatisfaction with services rendered.<p>
+
+<P>5. Refund & Rescheduling Policy
+<p>I understand that refunds are not guaranteed and are handled at the discretion of the Company.
+I acknowledge that cancellations or reschedules must follow the posted policy, or I may forfeit any deposit or payment made.<p>
+
+<P>6. Ohio Law and Jurisdiction
+<p>This agreement shall be governed by the laws of the State of Ohio.
+Any disputes arising out of or in connection with this agreement shall be resolved in a court located in the State of Ohio.<p>
+
+I have read, understood, and voluntarily agree to the above terms. I affirm that all information provided by me is true and accurate.
+  </ul>
+</section>
+  </label>
+  
+
+
+<section style="text-align: center; padding: 3rem 1rem; background: #fff1ea;">
+  <h2>Fun Fact</h2>
+  <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+    Studies show scratching can release dopamine. So technically, we’re not just scratching backs—we're delivering legal, fully clothed euphoria. Some call it therapeutic... we just call it foreplay for your nervous system.
+  </p>
+
+</section>
+
+
+  <section id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">What should I wear?</button>
+    <div>Comfy clothes — a tee or tank top is perfect. We scratch over clothing, so no need to change.</div>
+  </div>
+<div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">What forms of payment do you take?</button>
+    <div>We accept cash at the beginning of the appointment. We do not require a deposit at this time.</div>
+  </div>
+  <div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">Is this like a massage?</button>
+    <div>Not even close. This is light, repetitive touch designed for calming your nervous system, not kneading your muscles.</div>
+  </div>
+  <div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">Do you use tools?</button>
+    <div>Sometimes! We might use scratchers, brushes, or gloves — all sanitized and gentle — depending on your comfort level.</div>
+  </div>
+  <div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">Do I need an appointment?</button>
+    <div>Yep. We’re mobile-only, so everything is by appointment to keep it chill and focused.</div>
+  </div>
+  <div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">Can you come to events or parties?</button>
+    <div>We sure can. Ask us about private events, bridal parties, wellness pop-ups, or friend hangouts!</div>
+  </div>
+  <div class="faq-item">
+    <button type="button" onclick="toggleFAQ(this)">Is this safe?</button>
+    <div>Absolutely. Sessions are fully clothed, completely professional, and tailored to your comfort and boundaries.</div>
+  </div>
+</section>
+<section id="contact" style="background: #fff1ea; padding: 3rem 1rem; text-align: center;">
+  <h2 style="font-size: 2rem; margin-bottom: 1rem;">Contact Us</h2>
+  <form action="https://formspree.io/f/xdkgjjnb" method="POST" style="max-width: 600px; margin: 0 auto;">
+    <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border: none; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border: none; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <textarea name="message" rows="4" placeholder="Your Message" required style="width: 100%; padding: 1rem; margin-bottom: 1.5rem; border: none; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); resize: vertical;"></textarea>
+    <button type="submit" style="background-color: #ff7043; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 30px; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: background 0.3s ease;">
+      Send Message
+    </button>
+  </form>
+</section>
+  <section id="policies">
+    <h2>Policies</h2>
+    <ul>
+      <li>We are a clothed service only. No exceptions.</li>
+      <li>Clients must be respectful. Any inappropriate behavior ends the session immediately with no refund.</li>
+      <li>Scratching is done only in agreed-upon areas. We never go under clothes or near private zones.</li>
+      <li>Cancellations require 24 hours' notice. No-shows may be charged a fee.</li>
+      <li>Clients under 18 must have parental/guardian permission.</li>
+      <li>We reserve the right to refuse service to anyone who makes us feel unsafe or uncomfortable.</li>
+    </ul>
+  </section>
+
+  <a href="#booking" class="sticky-book">📅 Book Now</a>
+
+  <script>
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+<style>
+  .faq-item button {
+    background-color: #ffbfa7;
+    color: #2e2e2e;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-item button:hover {
+    background-color: #ff8a5b;
+    color: white;
+  }
+
+  .faq-item div {
+    background-color: #fff5ef;
+    color: #333;
+    padding: 10px 15px;
+    margin-top: 5px;
+    border-left: 4px solid #ff8a5b;
+    border-radius: 6px;
+  }
+</style>
+</body>
+</html>
